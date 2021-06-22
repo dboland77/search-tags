@@ -1,6 +1,7 @@
 import { React, useState, useEffect } from "react";
 import axios from "axios";
 import "./App.css";
+import SearchBar from "./components/SearchBar"
 
 const URL = "https://my.api.mockaroo.com/movies.json?key=bf3c1c60";
 
@@ -30,9 +31,9 @@ function App() {
   }, []);
 
   console.log(data);
-  
+
   return <div className="App">
-    <p></p>
+    <SearchBar/>
   </div>;
 }
 
