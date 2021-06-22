@@ -1,11 +1,19 @@
-import React from 'react'
+import React from "react";
+import "./TagBar.css";
+import Tag from "./Tag";
 
-const TagItem = () => {
+const TagItem = (props) => {
   return (
-    <div>
-      
+    <div className="row">
+      <li key={props.index}>{props.name}</li>
+      <input
+       type="text"
+       placeholder = "Placeholder"
+       ></input>
+       <button>Add Tag </button>
+       <Tag/>
     </div>
-  )
-}
+  );
+};
 
-export default TagItem
+export default TagItem;

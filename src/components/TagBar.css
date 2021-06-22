@@ -1,26 +1,33 @@
-.container {
-  display: flex;
-  text-align: left;
-  width: 100%;
-}
-
 .row {
   border-radius: 5px;
-  background: lightgray;
+  background: gray;
   padding: 1rem;
   margin: 1rem;
-  width: 100%;
+  width: 80%;
+  display: flex;
 }
 
 .tag {
   flex-grow: 2;
 }
 
-.input {
-  width: 2rem;
+input {
+  width: 10rem;
+  height: 1.5rem;
+  margin: 1rem;
+}
+
+button {
+  padding: 0.5rem;
+  border-radius: 10%;
+  height: 2rem;
+  background-color: green;
+  justify-self: end;
+  margin: 1rem;
 }
 
 li {
   list-style: none;
   padding: 1rem;
+  flex-grow: 2;
 }

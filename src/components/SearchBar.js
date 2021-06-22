@@ -1,4 +1,5 @@
 import React, { useState, Fragment } from "react";
+import "./SearchBar.css";
 
 const SearchBar = () => {
   const [name, setName] = useState("");
@@ -15,8 +16,8 @@ const SearchBar = () => {
         onChange={handleInputChange}
         value={name}
         results="0"
+        className="search"
       ></input>
-      <p>{name}</p>
     </Fragment>
   );
 };

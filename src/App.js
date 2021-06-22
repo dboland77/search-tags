@@ -3,6 +3,7 @@ import axios from "axios";
 import "./App.css";
 import SearchBar from "./components/SearchBar";
 import TagBar from "./components/TagBar";
+import Container from "./components/Container";
 
 const URL = "https://my.api.mockaroo.com/movies.json?key=bf3c1c60";
 
@@ -25,18 +26,21 @@ function App() {
     };
 
     loadTags();
-  
+
     return () => {
       source.cancel();
     };
   }, []);
 
-  //console.log(data);
 
-  return <div className="App">
-    <SearchBar/>
-    <TagBar props={data}/>
-  </div>;
+  return (
+    <div className="App">
+      <Container>
+        <SearchBar />
+        <TagBar props={data} />
+      </Container>
+    </div>
+  );
 }
 
 export default App;

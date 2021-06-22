@@ -1,0 +1,8 @@
+.container {
+  display: flex;
+  text-align: left;
+  width: 80%;
+  background: lightgrey;
+  margin: 1rem;
+  flex-direction: column;
+}
