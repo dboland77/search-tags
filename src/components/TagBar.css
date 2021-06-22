@@ -1,0 +1,26 @@
+.container {
+  display: flex;
+  text-align: left;
+  width: 100%;
+}
+
+.row {
+  border-radius: 5px;
+  background: lightgray;
+  padding: 1rem;
+  margin: 1rem;
+  width: 100%;
+}
+
+.tag {
+  flex-grow: 2;
+}
+
+.input {
+  width: 2rem;
+}
+
+li {
+  list-style: none;
+  padding: 1rem;
+}

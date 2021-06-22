@@ -1,21 +1,26 @@
-import React from 'react'
+import React from "react";
+import "./TagBar.css";
 
 const TagBar = (props) => {
-  const data = props.props
- if(Object.keys(data).length>0){
-   console.log(data)
-   return (
-     <ul>
-     {data.map((item,index) => {
-         return <li key = {index}>{item.name}</li>
-     })}
-     </ul>
-    
-   )
- }
- else{
-   return <p></p>
- }
-}
+  const data = props.props;
+  if (Object.keys(data).length > 0) {
+    console.log(data);
+    return (
+      <div className="container">
+        <ul>
+          {data.map((item, index) => {
+            return (
+              <li key={index} className="row">
+                {item.name}
+              </li>
+            );
+          })}
+        </ul>
+      </div>
+    );
+  } else {
+    return <p></p>;
+  }
+};
 
-export default TagBar
+export default TagBar;
