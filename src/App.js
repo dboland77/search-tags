@@ -1,7 +1,8 @@
 import { React, useState, useEffect } from "react";
 import axios from "axios";
 import "./App.css";
-import SearchBar from "./components/SearchBar"
+import SearchBar from "./components/SearchBar";
+import TagBar from "./components/TagBar";
 
 const URL = "https://my.api.mockaroo.com/movies.json?key=bf3c1c60";
 
@@ -30,10 +31,11 @@ function App() {
     };
   }, []);
 
-  console.log(data);
+  //console.log(data);
 
   return <div className="App">
     <SearchBar/>
+    <TagBar props={data}/>
   </div>;
 }
 
