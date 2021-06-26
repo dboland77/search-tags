@@ -2,7 +2,7 @@ import { React, useState, useEffect } from "react";
 import axios from "axios";
 import "./App.css";
 import SearchBar from "./components/SearchBar/SearchBar";
-import TagBar from "./components/DisplayBar/DisplayBar";
+import DisplayBar from "./components/DisplayBar/DisplayBar";
 import Container from "./components/MainContainer/Container";
 
 const URL = "https://my.api.mockaroo.com/movies.json?key=bf3c1c60";
@@ -13,7 +13,7 @@ function App() {
   useEffect(() => {
     const source = axios.CancelToken.source();
 
-    const loadTags = async () => {
+    const loadMovies = async () => {
       try {
         const response = await axios.get(URL);
         setData(response.data);
@@ -25,7 +25,7 @@ function App() {
       }
     };
 
-    loadTags();
+    loadMovies();
 
     return () => {
       source.cancel();
@@ -36,7 +36,7 @@ function App() {
     <div className="App">
       <Container>
         <SearchBar />
-        <TagBar props={data} />
+        <DisplayBar props={data} />
       </Container>
     </div>
   );

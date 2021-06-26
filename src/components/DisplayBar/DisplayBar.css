@@ -1,8 +1,7 @@
 .row {
   border-radius: 5px;
-  background: gray;
+  background:rgba(232,232,232,255);
   padding: 1rem;
-  margin: 1rem;
   width: 80%;
   display: flex;
 }
@@ -15,15 +14,18 @@ input {
   width: 10rem;
   height: 1.5rem;
   margin: 1rem;
+  border: 1px solid black 
 }
 
 button {
   padding: 0.5rem;
-  border-radius: 10%;
+  border: none;
   height: 2rem;
-  background-color: green;
+  background-color: rgba(0,105,102,255);
   justify-self: end;
   margin: 1rem;
+  color: white;
+  font-weight: bold;
 }
 
 li {

@@ -1,6 +1,6 @@
-import React, {Fragment} from "react";
+import React from "react";
 import "./DisplayBar.css";
-import TagItem from "../TagList/TagItem";
+import TagList from "../TagList/TagList"
 
 const DisplayBar = (props) => {
   const data = props.props;
@@ -10,12 +10,12 @@ const DisplayBar = (props) => {
       <ul>
         {data.map((item, index) => {
           return (
-            <Fragment>
-              <TagItem key={index} name={item.name} />
+            <ul className = "row">
+              <li key={index}>{item.name}</li>  
+              <TagList/>
               <input type="text" placeholder="Placeholder"></input>
               <button>Add Tag </button>
-              {/* <Tag/> */}
-            </Fragment>
+            </ul>
           );
         })}
       </ul>
