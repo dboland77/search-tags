@@ -11,7 +11,7 @@ const DisplayBar = (props) => {
           return (
             <ul key = {index} className = "row">
               <li key={index}>{item.name}</li>  
-              <TagList/>
+              <TagList movieId={item.id}/>
               <input type="text" placeholder="Placeholder"></input>
               <button>Add Tag </button>
             </ul>

@@ -1,21 +1,23 @@
 const initialState = {
   tags: [
-    { id: 1, text: "Tag1" },
-    { id: 2, text: "Tag2" },
-    { id: 3, text: "Tag3" },
-    { id: 4, text: "Tag4" },
-    { id: 5, text: "Tag5" }
+    { movieId: 1, tagId: 1, text: "Tag1" },
+    { movieId: 1, tagId: 2, text: "Tag2" },
+    { movieId: 1, tagId: 3, text: "Tag3" },
+    { movieId: 1, tagId: 4, text: "Tag4" },
+    { movieId: 1, tagId: 5, text: "Tag5" },
   ],
 };
 
 export default function tagsReducer(state = initialState, action) {
   switch (action.type) {
     case "tag/tagRemoved":
-      const tagId = action.payload;
-      console.log(tagId)
+      const [id, movieId] = action.payload;
+      console.log(id, movieId);
       return {
         ...state,
-        tags: state.tags.filter((item) => item.id !== tagId),
+        tags: state.tags.filter(
+          (tags) => !(tags.tagId === id && tags.movieId === movieId)
+        ),
       };
     case "tag/tagAdded":
       const tag = action.payload;
@@ -30,7 +32,7 @@ export default function tagsReducer(state = initialState, action) {
 
 export const tagAdded = (tag) => ({ type: "tag/tagAdded", payload: tag });
 
-export const tagRemoved = (tagId) => ({
-   type: 'tag/tagRemoved',
-   payload: tagId
+export const tagRemoved = (tagId, movieId) => ({
+  type: "tag/tagRemoved",
+  payload: [tagId, movieId],
 });

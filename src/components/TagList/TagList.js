@@ -4,12 +4,12 @@ import {tagRemoved} from './TagListSlice';
 
 import "./TagList.css";
 
-const TagList = () => {
+const TagList = ({movieId}) => {
   const dispatch = useDispatch()
   const {tags} = useSelector(state=>state.tags);
 
-  const handleRemove = (id) => {
-    dispatch(tagRemoved(id));
+  const handleRemove = (tagId, movieId) => {
+    dispatch(tagRemoved(tagId, movieId));
   };
 
   if (!tags) {
@@ -18,13 +18,13 @@ const TagList = () => {
 
   return (
     <ul className="tags">
-      {tags.map((item) => (
-        <li key = {item.id} className="tag">
-          {item.text}
+      {tags.map((tag) => (
+        <li key = {tag.tagId} className="tag">
+          {tag.text}
           <span 
-          key = {item.id} 
+          key = {tag.tagId} 
           className="tagRemove" 
-          onClick={() => handleRemove(item.id)}
+          onClick={() => handleRemove(tag.tagId, movieId)}
           aria-label="Remove tag">
           &times;
           </span>
