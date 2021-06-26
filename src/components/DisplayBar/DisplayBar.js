@@ -5,12 +5,11 @@ import TagList from "../TagList/TagList"
 const DisplayBar = (props) => {
   const data = props.props;
   if (Object.keys(data).length > 0) {
-    // console.log(data);
     return (
       <ul>
         {data.map((item, index) => {
           return (
-            <ul className = "row">
+            <ul key = {index} className = "row">
               <li key={index}>{item.name}</li>  
               <TagList/>
               <input type="text" placeholder="Placeholder"></input>

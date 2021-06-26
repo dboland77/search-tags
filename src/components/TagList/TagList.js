@@ -1,62 +1,35 @@
-import React, { useReducer } from "react";
+import React from "react";
+import {useSelector, useDispatch} from 'react-redux'
+
 import "./TagList.css";
 
-const listReducer = (state, action) => {
-  switch (action.type) {
-    case "REMOVE_ITEM":
-      return {
-        ...state,
-        list: state.list.filter((item) => item.id !== action.id),
-      };
-    default:
-      throw new Error();
-  }
-};
-
-const initialList = [
-  {
-    id: 1,
-    text: "Tag1",
-  },
-  {
-    id: 2,
-    text: "Tag2",
-  },
-  {
-    id: 3,
-    text: "Tag3",
-  },
-  {
-    id: 4,
-    text: "Tag4",
-  },
-  {
-    id: 5,
-    text: "Tag5",
-  },
-];
-
 const TagList = () => {
-  const [listData, dispatchListData] = useReducer(listReducer, {
-    list: initialList,
-    isShowList: true,
-  });
+  const dispatch = useDispatch()
+
+  const listData = useSelector(state => state);
 
   const handleRemove = (id) => {
-    dispatchListData({ type: "REMOVE_ITEM", id });
+    dispatch({ type: "REMOVE_ITEM", id });
   };
 
-  if (!listData.isShowList) {
+  if (!listData) {
+    console.log(listData)
     return null;
   }
+
+  console.log("hello", listData)
 
   return (
     <ul className="tags">
       {listData.list.map((item) => (
         <li key = {item.id} className="tag">
           {item.text}
-          <span key = {item.id} className="tagClose" onClick={() => handleRemove(item.id)}>
-            x
+          <span 
+          key = {item.id} 
+          className="tagRemove" 
+          onClick={() => handleRemove(item.id)}
+          aria-label="Remove tag">
+          &times;
           </span>
         </li>
       ))}
