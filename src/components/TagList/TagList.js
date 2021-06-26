@@ -1,27 +1,24 @@
 import React from "react";
-import {useSelector, useDispatch} from 'react-redux'
+import {useSelector, useDispatch} from 'react-redux';
+import {tagRemoved} from './TagListSlice';
 
 import "./TagList.css";
 
 const TagList = () => {
   const dispatch = useDispatch()
-
-  const listData = useSelector(state => state);
+  const {tags} = useSelector(state=>state.tags);
 
   const handleRemove = (id) => {
-    dispatch({ type: "REMOVE_ITEM", id });
+    dispatch(tagRemoved(id));
   };
 
-  if (!listData) {
-    console.log(listData)
+  if (!tags) {
     return null;
   }
 
-  console.log("hello", listData)
-
   return (
     <ul className="tags">
-      {listData.list.map((item) => (
+      {tags.map((item) => (
         <li key = {item.id} className="tag">
           {item.text}
           <span 

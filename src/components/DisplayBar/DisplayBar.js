@@ -20,7 +20,7 @@ const DisplayBar = (props) => {
       </ul>
     );
   } else {
-    return <p></p>;
+    return <TagList/>;
   }
 };
 

@@ -1,21 +1,36 @@
 const initialState = {
-  tags: [{ id: 1, text: "Tag1" }],
+  tags: [
+    { id: 1, text: "Tag1" },
+    { id: 2, text: "Tag2" },
+    { id: 3, text: "Tag3" },
+    { id: 4, text: "Tag4" },
+    { id: 5, text: "Tag5" }
+  ],
 };
 
-export const tagsReducer = (state = initialState, action) => {
+export default function tagsReducer(state = initialState, action) {
   switch (action.type) {
-    case "REMOVE_ITEM":
+    case "tag/tagRemoved":
+      const tagId = action.payload;
+      console.log(tagId)
       return {
         ...state,
-        tags: state.list.filter((item) => item.id !== action.id),
+        tags: state.tags.filter((item) => item.id !== tagId),
       };
-    case "ADD_ITEM":
+    case "tag/tagAdded":
+      const tag = action.payload;
       return {
         ...state,
-        tags: [...state, { id: action.id, text: action.text }],
+        tags: [...state, { id: tag.id, text: tag.text }],
       };
     default:
       return state;
   }
-};
+}
 
+export const tagAdded = (tag) => ({ type: "tag/tagAdded", payload: tag });
+
+export const tagRemoved = (tagId) => ({
+   type: 'tag/tagRemoved',
+   payload: tagId
+});
