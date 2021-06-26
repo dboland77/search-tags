@@ -1,6 +1,6 @@
 import React, { useReducer } from "react";
 import TagList from "./TagList";
-import "./Tag.css";
+
 
 const listReducer = (state, action) => {
   switch (action.type) {

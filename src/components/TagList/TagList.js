@@ -1,3 +1,5 @@
+import "./TagList.css";
+
 const TagList = ({ list, onRemove }) => (
   <ul>
     {list.map((item) => (
@@ -7,11 +9,10 @@ const TagList = ({ list, onRemove }) => (
 );
 
 const Item = ({ item, onRemove }) => (
-  <li>
-    <span>{item.text}</span>
-    <button type="button" onClick={() => onRemove(item.id)}>
+  <li>{item.text}<span className="close">x</span>
+    {/* <button type="button" onClick={() => onRemove(item.id)}>
       x
-    </button>
+    </button> */}
   </li>
 );
 
