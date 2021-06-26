@@ -1,42 +1,34 @@
-import { React, useState, useEffect } from "react";
-import axios from "axios";
+// import { React, useState, useEffect } from "react";
+// import axios from "axios";
 import "./App.css";
 import SearchBar from "./components/SearchBar/SearchBar";
 import DisplayBar from "./components/DisplayBar/DisplayBar";
 import Container from "./components/MainContainer/Container";
 
-const URL = "https://my.api.mockaroo.com/movies.json?key=bf3c1c60";
+
 
 function App() {
-  const [data, setData] = useState({});
+  // const [data, setData] = useState({});
 
-  useEffect(() => {
-    const source = axios.CancelToken.source();
+  // useEffect(() => {
+    
 
-    const loadMovies = async () => {
-      try {
-        const response = await axios.get(URL);
-        setData(response.data);
-      } catch (error) {
-        if (axios.isCancel(error)) {
-        } else {
-          throw error;
-        }
-      }
-    };
+  //   const loadMovies = async () => {
+      
+  //   };
 
-    loadMovies();
+  //   loadMovies();
 
-    return () => {
-      source.cancel();
-    };
-  }, []);
+  //   return () => {
+      
+  //   };
+  // }, []);
 
   return (
     <div className="App">
       <Container>
         <SearchBar />
-        <DisplayBar props={data} />
+        <DisplayBar />
       </Container>
     </div>
   );

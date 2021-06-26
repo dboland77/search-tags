@@ -5,8 +5,10 @@ import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import store from "./store";
+import {fetchTags} from './components/TagList/TagListSlice';
 
-//import {fetchTags} from './components/TagList/TagListSlice'
+//Load our API data into Redux store
+store.dispatch(fetchTags())
 
 ReactDOM.render(
   <React.StrictMode>
