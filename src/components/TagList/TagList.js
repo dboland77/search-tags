@@ -1,25 +1,26 @@
 import React from "react";
 import {useSelector, useDispatch} from 'react-redux';
 import {tagRemoved, selectTags} from './TagListSlice';
-
 import "./TagList.css";
+
 
 const TagList = ({movieId}) => {
   const dispatch = useDispatch()
-  const {tags} = useSelector(selectTags);
-  
 
+  const tagList = useSelector(selectTags);
+  
+  
   const handleRemove = (tagId, movieId) => {
     dispatch(tagRemoved(tagId, movieId));
   };
 
-  if (!tags) {
+  if (!tagList) {
     return null;
   }
 
   return (
     <ul className="tags">
-      {tags.map((tag) => (
+      {tagList.map((tag) => (
         <li key = {tag.tagId} className="tag">
           {tag.text}
           <span 

@@ -1,35 +1,39 @@
 import React from "react";
-import "./DisplayBar.css";
 import TagList from "../TagList/TagList";
 import { useSelector } from "react-redux";
-import {selectMovies} from "../TagList/TagListSlice";
+import { selectMovies, selectTags, selectLoadingStatus } from "../TagList/TagListSlice";
 
+import "./DisplayBar.css";
 
 const DisplayBar = () => {
+
+  const loadingStatus = useSelector(selectLoadingStatus)
+  const movieList = useSelector(selectMovies);
   
-  const data = useSelector(selectMovies);
-  console.log(data)
-  return (
-    <p></p>
-  )
-  // if (Object.keys(data).length > 0) {
-  //   return (
-  //     <ul>
-  //       {data.map((item, index) => {
-  //         return (
-  //           <ul key = {index} className = "row">
-  //             <li key={index}>{item.name}</li>  
-  //             <TagList movieId={item.id}/>
-  //             <input type="text" placeholder="Placeholder"></input>
-  //             <button>Add Tag </button>
-  //           </ul>
-  //         );
-  //       })}
-  //     </ul>
-  //   );
-  // } else {
-  //   return <TagList/>;
-  // }
+  if(loadingStatus === 'loading'){
+    return (
+      <h1>LOADING PLEASE WAIT</h1>
+      )
+    }
+
+  if (Object.keys(movieList).length > 0) {
+    return (
+      <ul>
+        {movieList.map((item, index) => {
+          return (
+            <ul key = {index} className = "row">
+              <li key={index}>{item.name}</li>
+              <TagList movieId={item.id}/>
+              <input type="text" placeholder="Placeholder"></input>
+              <button>Add Tag </button>
+            </ul>
+          );
+        })}
+      </ul>
+    );
+  } else {
+    return <h1>Sorry no movies returned</h1>;
+  }
 };
 
 export default DisplayBar;
