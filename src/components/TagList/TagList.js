@@ -1,13 +1,17 @@
 import React from "react";
 import {useSelector, useDispatch} from 'react-redux';
-import {tagRemoved, selectTagListbyId} from './TagListSlice';
+import {
+  tagRemoved, 
+  selectTagListbyId,
+  selectFilteredTagListbyId} from './TagListSlice';
 import "./TagList.css";
 
 
 const TagList = ({movieId}) => {
   const dispatch = useDispatch()
 
-  const tagList = useSelector(selectTagListbyId(movieId));
+  //let tagList = useSelector(selectTagListbyId(movieId));
+  const tagList = useSelector(selectFilteredTagListbyId(movieId))
   
   const handleRemove = (tagId, movieId) => {
     dispatch(tagRemoved(tagId, movieId));
