@@ -1,70 +1,32 @@
-# Getting Started with Create React App
+# App to retrieve a list of movies and add tag management system
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+The app retrieves a list of movie names from a mock API and allows users to:
+1. Add tags to that movie
+1. Remove tags from that movie
 
-## Available Scripts
+The taglist for the movie created by the user will be displayed in the bar after adding tags. 
 
-In the project directory, you can run:
+The app is built with:
+1. React - functional with hooks
+1. Redux
+1. CSS3
+1. HTML
 
-### `npm start`
+# To install and use this app
+Clone this repo and cd to the project directory. 
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Run "npm install" and allow the packages to install - you will receive some severity warnings please ignore these. 
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+Run npm start and the app will start to run and launch in your browser at localhost:3000
 
-### `npm test`
+# Remaining App TODO
+1. Add filter functionality to filter by Tag
+1. Limit the number of tags by movie to 5
+1. Clear the placeholder input field when a user clicks "Add Tag"
+1. Persist the app state to local storage
+1. Testing with Jest
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+# Nice to have - possible extensions
+1. Typeahead filtering in the search tags bar
+1. Suggest tags to the user
+1. Limit the characters available in the placeholder for tags

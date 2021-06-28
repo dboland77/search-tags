@@ -19,13 +19,14 @@ const DisplayBar = () => {
 
   const loadingStatus = useSelector(selectLoadingStatus);
   const movieList = useSelector(selectMovies);
-  //const totalTagCount = useSelector(selectTotalTagCount);
+  const totalTagCount = useSelector(selectTotalTagCount);
 
   if (loadingStatus === "loading") {
     return <h1>LOADING PLEASE WAIT</h1>;
   }
 
   const handleAddTag = (e, tagId, movieId) => {
+    //TODO - limit the tag count to 5 by movie
     const tagCount = 4;
 
     if (tagCount >= 5) {
@@ -45,7 +46,6 @@ const DisplayBar = () => {
 
   const handleInputChange = (e) => {
     setText(e.target.value);
-    console.log(text);
   };
 
   if (Object.keys(movieList).length > 0) {
@@ -61,7 +61,7 @@ const DisplayBar = () => {
                 placeholder="Placeholder"
                 onChange={handleInputChange}
               ></input>
-              <button type = "submit" onClick={(e) => handleAddTag(e, 1, item.id)}>
+              <button type = "submit" onClick={(e) => handleAddTag(e, totalTagCount+1, item.id)}>
                 Add Tag{" "}
               </button>
             </ul>
