@@ -18,6 +18,7 @@ const initialState = {
     { movieId: 4, tagId: 6, text: "Tag6" },
     { movieId: 5, tagId: 7, text: "Tag7" },
   ],
+  totalTagCount: 7
 };
 
 export default function tagsReducer(state = initialState, action) {
@@ -37,10 +38,12 @@ export default function tagsReducer(state = initialState, action) {
       };
     }
     case "tags/tagAdded":
-      const [movie, tag, text] = action.payload;
+      const [tag,movie, text] = action.payload;
+      
       return {
         ...state,
-        tags: [...state, { movieId: movie, tagId: tag, text: text }],
+        taglist:  [...state.taglist, { movieId: movie, tagId: tag, text: text }],
+        totalTagCount: state.totalTagCount + 1
       };
     case "tags/tagsLoaded": {
       const newMovies = action.payload;
@@ -56,7 +59,9 @@ export default function tagsReducer(state = initialState, action) {
 }
 
 // Action creators
-export const tagAdded = (tag) => ({ type: "tags/tagAdded", payload: tag });
+export const tagAdded = (tagId, movieId, text) => {
+  console.log("tagAdded", tagId, movieId, text)
+  return { type: "tags/tagAdded", payload: [tagId, movieId, text]}};
 
 export const tagRemoved = (tagId, movieId) => ({
   type: "tags/tagRemoved",
@@ -91,8 +96,12 @@ export const fetchTags = () => async (dispatch) => {
 export const selectMovies = (state) => state.tags.movies;
 export const selectLoadingStatus = (state) => state.tags.status;
 export const selectTagList = (state) => state.tags.taglist;
+export const selectTotalTagCount = (state)=> state.tags.totalTagCount
 
 export const selectTagListbyId = id => state => {
   return state.tags.taglist.filter(tag=>tag.movieId===id)
 }
 
+export const selectTagCountbyMovie = id => state => {
+  return state.tags.taglist.filter(tag=>tag.movieId===id).length
+}
