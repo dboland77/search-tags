@@ -1,20 +1,32 @@
-import React, { useState, Fragment } from "react";
+import React, { useState, Fragment, useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { tagFiltered } from "../TagList/TagListSlice";
+
 import "./SearchBar.css";
 
 const SearchBar = () => {
-  const [name, setName] = useState("");
+  const [searchText, setSearchText] = useState("");
+  const dispatch = useDispatch();
 
   const handleInputChange = (e) => {
-    let text = e.target.value;
-    setName(text);
+    const text = e.target.value;
+    setSearchText(text);
   };
+
+  useEffect(() => {
+    if (searchText !== "") {
+      const searchPattern = new RegExp(`^${searchText}`, "gi");
+      dispatch(tagFiltered(searchPattern));
+    }
+  }, [searchText, dispatch]);
+
   return (
     <Fragment>
       <input
         type="search"
         placeholder="Search Tags"
         onChange={handleInputChange}
-        value={name}
+        value={searchText}
         results="0"
         className="search"
       ></input>

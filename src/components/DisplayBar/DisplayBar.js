@@ -5,7 +5,6 @@ import {
   selectMovies,
   selectLoadingStatus,
   selectTotalTagCount,
-  selectTagCountbyMovie,
   tagAdded
 } from "../TagList/TagListSlice";
 

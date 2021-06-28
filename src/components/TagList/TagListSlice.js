@@ -10,14 +10,15 @@ const initialState = {
     { id: 5, name: "movie 5", created_at: "2020-06-20 04:23:57" },
   ],
   taglist: [
-    { movieId: 1, tagId: 1, text: "Tag1" },
-    { movieId: 1, tagId: 2, text: "Tag2" },
-    { movieId: 2, tagId: 3, text: "Tag3" },
-    { movieId: 2, tagId: 4, text: "Tag4" },
-    { movieId: 3, tagId: 5, text: "Tag5" },
-    { movieId: 4, tagId: 6, text: "Tag6" },
-    { movieId: 5, tagId: 7, text: "Tag7" },
+    { movieId: 1, tagId: 1, text: "and" },
+    { movieId: 1, tagId: 2, text: "the" },
+    { movieId: 2, tagId: 3, text: "tags" },
+    { movieId: 2, tagId: 4, text: "can" },
+    { movieId: 3, tagId: 5, text: "be" },
+    { movieId: 4, tagId: 6, text: "filtered" },
+    { movieId: 5, tagId: 7, text: "now" },
   ],
+  filteredTagList: [],
   totalTagCount: 7
 };
 
@@ -53,6 +54,13 @@ export default function tagsReducer(state = initialState, action) {
         movies: newMovies,
       };
     }
+    case "tags/tagsFiltered": {
+      const searchPattern = action.payload
+      return {
+        ...state,
+        filteredTagList:  [...state.taglist.filter(
+          tag=> tag.text.match(searchPattern))]
+      }};
     default:
       return state;
   }
@@ -60,12 +68,16 @@ export default function tagsReducer(state = initialState, action) {
 
 // Action creators
 export const tagAdded = (tagId, movieId, text) => {
-  console.log("tagAdded", tagId, movieId, text)
   return { type: "tags/tagAdded", payload: [tagId, movieId, text]}};
 
 export const tagRemoved = (tagId, movieId) => ({
   type: "tags/tagRemoved",
   payload: [tagId, movieId],
+});
+
+export const tagFiltered = (searchText) => ({
+  type: "tags/tagsFiltered",
+  payload: searchText,
 });
 
 export const tagsLoading = () => ({ type: "tags/tagsLoading" });

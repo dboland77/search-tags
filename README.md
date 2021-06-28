@@ -25,6 +25,8 @@ Run npm start and the app will start to run and launch in your browser at localh
 1. Clear the placeholder input field when a user clicks "Add Tag"
 1. Persist the app state to local storage
 1. Testing with Jest
+1. Add Date to movie name
+1. Debounce the search component
 
 # Nice to have - possible extensions
 1. Typeahead filtering in the search tags bar

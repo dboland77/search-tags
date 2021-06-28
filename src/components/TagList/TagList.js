@@ -1,6 +1,6 @@
 import React from "react";
 import {useSelector, useDispatch} from 'react-redux';
-import {tagRemoved, selectTagList, selectTagListbyId} from './TagListSlice';
+import {tagRemoved, selectTagListbyId} from './TagListSlice';
 import "./TagList.css";
 
 
