@@ -15,6 +15,8 @@ const initialState = {
     { movieId: 2, tagId: 3, text: "Tag3" },
     { movieId: 2, tagId: 4, text: "Tag4" },
     { movieId: 3, tagId: 5, text: "Tag5" },
+    { movieId: 4, tagId: 6, text: "Tag6" },
+    { movieId: 5, tagId: 7, text: "Tag7" },
   ],
 };
 

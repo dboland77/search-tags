@@ -9,8 +9,6 @@ const TagList = ({movieId}) => {
 
   const tagList = useSelector(selectTagListbyId(movieId));
   
-  console.log("Hello from tags", tagList)
-  
   const handleRemove = (tagId, movieId) => {
     dispatch(tagRemoved(tagId, movieId));
   };
@@ -29,7 +27,7 @@ const TagList = ({movieId}) => {
           className="tagRemove" 
           onClick={() => handleRemove(tag.tagId, movieId)}
           aria-label="Remove tag">
-          &times;
+          &nbsp; &times;
           </span>
         </li>
       ))}

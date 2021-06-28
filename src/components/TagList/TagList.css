@@ -13,13 +13,11 @@
 }
 
 /* Style the close button (span) */
-.tagRemove {
+ .tagRemove {
   cursor: pointer;
   position: absolute;
-  top: 0%;
-  right: 0%;
-  transform: translate(-15%, -10%);
-}
+
+} 
 
 .tag {
   background-color: rgba(62, 112, 174, 255);
