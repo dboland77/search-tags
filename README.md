@@ -23,7 +23,7 @@ Run npm start and the app will start to run and launch in your browser at localh
 1. Add filter functionality to filter by Tag
 1. Limit the number of tags by movie to 5
 1. Clear the placeholder input field when a user clicks "Add Tag"
-1. Persist the app state to local storage
+1. Persist the app state to local storage (I would implement this with redux-persist)
 1. Testing with Jest
 1. Add Date to movie name
 1. Debounce the search component

@@ -14,10 +14,9 @@ const SearchBar = () => {
   };
 
   useEffect(() => {
-    if (searchText !== "") {
       const searchPattern = new RegExp(`^${searchText}`, "gi");
       dispatch(tagFiltered(searchPattern));
-    }
+    
   }, [searchText, dispatch]);
 
   return (

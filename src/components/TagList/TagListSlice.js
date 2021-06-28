@@ -111,7 +111,7 @@ export const selectTagList = (state) => state.tags.taglist;
 export const selectTotalTagCount = (state)=> state.tags.totalTagCount
 
 export const selectTagListbyId = id => state => {
-  return state.tags.taglist.filter(tag=>tag.movieId===id)
+  return state.tags.filteredTagList.filter(tag=>tag.movieId===id)
 }
 
 export const selectTagCountbyMovie = id => state => {
