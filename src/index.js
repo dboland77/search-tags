@@ -8,7 +8,8 @@ import store from "./store";
 import {fetchTags} from './components/TagList/TagListSlice';
 
 //Load our API data into Redux store
-store.dispatch(fetchTags())
+//store.dispatch(fetchTags())
+//console.log(store.getState())
 
 ReactDOM.render(
   <React.StrictMode>

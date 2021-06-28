@@ -1,14 +1,15 @@
 import React from "react";
 import {useSelector, useDispatch} from 'react-redux';
-import {tagRemoved, selectTags} from './TagListSlice';
+import {tagRemoved, selectTagList, selectTagListbyId} from './TagListSlice';
 import "./TagList.css";
 
 
 const TagList = ({movieId}) => {
   const dispatch = useDispatch()
 
-  const tagList = useSelector(selectTags);
+  const tagList = useSelector(selectTagListbyId(movieId));
   
+  console.log("Hello from tags", tagList)
   
   const handleRemove = (tagId, movieId) => {
     dispatch(tagRemoved(tagId, movieId));
@@ -33,6 +34,7 @@ const TagList = ({movieId}) => {
         </li>
       ))}
     </ul>
+    
   );
 };
 

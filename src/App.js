@@ -5,30 +5,12 @@ import SearchBar from "./components/SearchBar/SearchBar";
 import DisplayBar from "./components/DisplayBar/DisplayBar";
 import Container from "./components/MainContainer/Container";
 
-
-
 function App() {
-  // const [data, setData] = useState({});
-
-  // useEffect(() => {
-    
-
-  //   const loadMovies = async () => {
-      
-  //   };
-
-  //   loadMovies();
-
-  //   return () => {
-      
-  //   };
-  // }, []);
-
   return (
     <div className="App">
       <Container>
         <SearchBar />
-        <DisplayBar />
+        <DisplayBar /> 
       </Container>
     </div>
   );

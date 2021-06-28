@@ -1,7 +1,7 @@
 import React from "react";
 import TagList from "../TagList/TagList";
 import { useSelector } from "react-redux";
-import { selectMovies, selectTags, selectLoadingStatus } from "../TagList/TagListSlice";
+import { selectMovies, selectLoadingStatus } from "../TagList/TagListSlice";
 
 import "./DisplayBar.css";
 
