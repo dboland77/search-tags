@@ -74,6 +74,7 @@ const TagList = ({ movieId }) => {
         type="text"
         placeholder="Placeholder"
         onChange={handleInputChange}
+        value={text}
       ></input>
       <button
         onClick={(e) => handleAddTag(e, totalTagCount + 1, movieId)}
