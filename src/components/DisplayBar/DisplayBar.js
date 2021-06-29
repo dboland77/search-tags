@@ -1,68 +1,40 @@
-import React, { useState } from "react";
+import React from "react";
 import TagList from "../TagList/TagList";
-import { useSelector, useDispatch } from "react-redux";
-import {
-  selectMovies,
-  selectLoadingStatus,
-  selectTotalTagCount,
-  tagAdded
-} from "../TagList/TagListSlice";
-
+import { useSelector } from "react-redux";
+import { selectMovies, selectLoadingStatus } from "../TagList/TagListSlice";
+import { monthNames, monthSuffix } from "../utilities/Utilities";
 import "./DisplayBar.css";
 
 const DisplayBar = () => {
-  //local state to track the placeholder text
-  const [text, setText] = useState("");
-
-  const dispatch = useDispatch();
-
   const loadingStatus = useSelector(selectLoadingStatus);
   const movieList = useSelector(selectMovies);
-  const totalTagCount = useSelector(selectTotalTagCount);
 
   if (loadingStatus === "loading") {
     return <h1>LOADING PLEASE WAIT</h1>;
   }
 
-  const handleAddTag = (e, tagId, movieId) => {
-    //TODO - limit the tag count to 5 by movie
-    const tagCount = 4;
 
-    if (tagCount >= 5) {
-      alert("Max tags of 5 please remove one");
-      return
-    }
-
-    if (text === "") {
-      alert("Please enter a non-blank tag text");
-      return
-    }
-
-    dispatch(tagAdded(tagId, movieId, text));
-
-   setText("")
-  };
-
-  const handleInputChange = (e) => {
-    setText(e.target.value);
-  };
-
+  const formatDateString = (str)=> {
+    let [year,month,day] = str.split('-')
+    day = day.slice(0,2)
+    str = `Released: ${day}${monthSuffix[day]} ${monthNames[month]} ${year}`
+    return str
+  }
   if (Object.keys(movieList).length > 0) {
     return (
       <ul>
         {movieList.map((item, index) => {
           return (
-            <ul key={index} className="row">
-              <li key={index}>{item.name}</li>
-              <TagList movieId={item.id} />
-              <input
-                type="text"
-                placeholder="Placeholder"
-                onChange={handleInputChange}
-              ></input>
-              <button type = "submit" onClick={(e) => handleAddTag(e, totalTagCount+1, item.id)}>
-                Add Tag{" "}
-              </button>
+            <ul key={index}>
+              <div className="row">
+                <div className="movieDetails">
+                  <li key={index+1000}>{item.name}</li>
+                  <li key={index+10000} className="datefield">
+                    {formatDateString(item.created_at)}
+                  </li>
+                </div>
+                <TagList movieId={item.id} />
+              </div>
             </ul>
           );
         })}

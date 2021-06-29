@@ -1,39 +1,16 @@
-.row {
-  border-radius: 10px;
-  background: rgba(232, 232, 232, 255);
-  padding: 1rem;
-  width: 95%;
-  margin-bottom: 5px;
-  display: flex;
-}
-
-.tag {
-  flex-grow: 2;
-}
-
-input {
-  width: 10rem;
-  height: 1.5rem;
-  margin: 1rem;
-  border: 1px solid black;
-  padding: 5px;
-}
-
-button {
-  padding: 0.5rem;
-  border-radius: 5px;
-  border: none;
-  height: 2rem;
-  background-color: rgba(0, 105, 102, 255);
-  justify-self: end;
-  margin: 1rem;
-  color: white;
-  font-weight: bold;
-  cursor: pointer;
-}
-
 li {
   list-style: none;
   padding: 1rem;
-  flex-grow: 2;
+  width: 100%;
 }
+
+.datefield{
+  width: 100%;
+  align-self: flex-start;
+}
+
+.movieDetails{
+  align-self: flex-start;
+  width: 100%
+}
+
