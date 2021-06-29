@@ -1,6 +1,10 @@
 import React, { useState, Fragment, useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { tagFiltered } from "../TagList/TagListSlice";
+import {
+  tagFiltered,
+  tagFilterStart,
+  tagFilterDone,
+} from "../TagList/TagListSlice";
 
 import "./SearchBar.css";
 
@@ -10,13 +14,19 @@ const SearchBar = () => {
 
   const handleInputChange = (e) => {
     const text = e.target.value;
+    if (text === "") {
+      dispatch(tagFilterDone());
+    } else
+    {
+      dispatch(tagFilterStart())
+    }
     setSearchText(text);
   };
 
   useEffect(() => {
-      const searchPattern = new RegExp(`^${searchText}`, "gi");
-      dispatch(tagFiltered(searchPattern));
-    
+
+    const searchPattern = new RegExp(`^${searchText}`, "gi");
+    dispatch(tagFiltered(searchPattern));
   }, [searchText, dispatch]);
 
   return (

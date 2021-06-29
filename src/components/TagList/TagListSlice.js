@@ -19,7 +19,8 @@ const initialState = {
     { movieId: 5, tagId: 7, text: "now" },
   ],
   filteredTagList: [],
-  totalTagCount: 7
+  totalTagCount: 7,
+  applyFilter: false,
 };
 
 export default function tagsReducer(state = initialState, action) {
@@ -39,12 +40,12 @@ export default function tagsReducer(state = initialState, action) {
       };
     }
     case "tags/tagAdded":
-      const [tag,movie, text] = action.payload;
-      
+      const [tag, movie, text] = action.payload;
+
       return {
         ...state,
-        taglist:  [...state.taglist, { movieId: movie, tagId: tag, text: text }],
-        totalTagCount: state.totalTagCount + 1
+        taglist: [...state.taglist, { movieId: movie, tagId: tag, text: text }],
+        totalTagCount: state.totalTagCount + 1,
       };
     case "tags/tagsLoaded": {
       const newMovies = action.payload;
@@ -54,13 +55,27 @@ export default function tagsReducer(state = initialState, action) {
         movies: newMovies,
       };
     }
-    case "tags/tagsFiltered": {
-      const searchPattern = action.payload
+    case "tags/filterStart": {
       return {
         ...state,
-        filteredTagList:  [...state.taglist.filter(
-          tag=> tag.text.match(searchPattern))]
-      }};
+        applyFilter: true,
+      };
+    }
+    case "tags/filterDone": {
+      return {
+        ...state,
+        applyFilter: false,
+      };
+    }
+    case "tags/tagsFiltered": {
+      const searchPattern = action.payload;
+      return {
+        ...state,
+        filteredTagList: [
+          ...state.taglist.filter((tag) => tag.text.match(searchPattern)),
+        ],
+      };
+    }
     default:
       return state;
   }
@@ -68,7 +83,8 @@ export default function tagsReducer(state = initialState, action) {
 
 // Action creators
 export const tagAdded = (tagId, movieId, text) => {
-  return { type: "tags/tagAdded", payload: [tagId, movieId, text]}};
+  return { type: "tags/tagAdded", payload: [tagId, movieId, text] };
+};
 
 export const tagRemoved = (tagId, movieId) => ({
   type: "tags/tagRemoved",
@@ -81,6 +97,8 @@ export const tagFiltered = (searchText) => ({
 });
 
 export const tagsLoading = () => ({ type: "tags/tagsLoading" });
+export const tagFilterStart = () => ({ type: "tags/filterStart" });
+export const tagFilterDone = () => ({ type: "tags/filterDone" });
 
 export const tagsLoaded = (data) => ({
   type: "tags/tagsLoaded",
@@ -107,17 +125,18 @@ export const fetchTags = () => async (dispatch) => {
 //selectors
 export const selectMovies = (state) => state.tags.movies;
 export const selectLoadingStatus = (state) => state.tags.status;
+export const selectFilterStatus = (state) => state.tags.applyFilter;
 export const selectTagList = (state) => state.tags.taglist;
-export const selectTotalTagCount = (state)=> state.tags.totalTagCount
+export const selectTotalTagCount = (state) => state.tags.totalTagCount;
 
-export const selectTagListbyId = id => state => {
-  return state.tags.taglist.filter(tag=>tag.movieId===id)
-}
+export const selectTagListbyId = (id) => (state) => {
+  return state.tags.taglist.filter((tag) => tag.movieId === id);
+};
 
-export const selectFilteredTagListbyId = id => state => {
-  return state.tags.filteredTagList.filter(tag=>tag.movieId===id)
-}
+export const selectFilteredTagListbyId = (id) => (state) => {
+  return state.tags.filteredTagList.filter((tag) => tag.movieId === id);
+};
 
-export const selectTagCountbyMovie = id => state => {
-  return state.tags.taglist.filter(tag=>tag.movieId===id).length
-}
+export const selectTagCountbyMovie = (id) => (state) => {
+  return state.tags.taglist.filter((tag) => tag.movieId === id).length;
+};

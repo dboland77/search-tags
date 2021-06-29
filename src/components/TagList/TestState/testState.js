@@ -18,4 +18,5 @@ const initialState = {
   ],
   filteredTagList: [],
   totalTagCount: 7,
+  applyFilter: false
 };
