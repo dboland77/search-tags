@@ -1,20 +1,26 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { Provider } from "react-redux";
+import {PersistGate} from "redux-persist/integration/react";
+
 import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
-import store from "./store";
+import store, {persistor} from "./store";
+
+// eslint-disable-next-line
 import {fetchTags} from './components/TagList/TagListSlice';
 
 //Load our API data into Redux store
-store.dispatch(fetchTags())
+//store.dispatch(fetchTags())
 
 
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
+    <PersistGate persistor={persistor}>
       <App />
+    </PersistGate>
     </Provider>
   </React.StrictMode>,
   document.getElementById("root")

@@ -1,3 +1,4 @@
+// eslint-disable-next-line
 const initialState = {
   status: "idle",
   movies: [
