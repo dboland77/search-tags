@@ -8,12 +8,6 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import store, {persistor} from "./store";
 
-// eslint-disable-next-line
-import {fetchTags} from './components/TagList/TagListSlice';
-
-//Load our API data into Redux store
-//store.dispatch(fetchTags())
-
 
 ReactDOM.render(
   <React.StrictMode>
